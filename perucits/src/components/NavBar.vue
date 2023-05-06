@@ -1,16 +1,13 @@
 <template>
-    <v-app-bar app color="primary" dark>
+    <v-app-bar app style="background-color:#111027; position:static">
       <div class="d-flex align-center">
         <v-img
           alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
+          src="https://www.podfeet.com/blog/wp-content/uploads/2021/09/GitHub-Copilot-logo-1040x650.png"
           width="40"
         />
 
-        <span class="title font-weight-light">PeruCits</span>
+        <span class="title font-weight-light" style="color:white">Modelo de mejores Prácticas con GitHub Copilot</span>
       </div>
 
       <v-spacer></v-spacer>
@@ -20,21 +17,14 @@
         text
         @click="goSearch()"
       >
-        <span class="mr-2">Buscar lugares</span>
+        <span class="mr-2" style="color:white">Prácticas</span>
       </v-btn>
       <v-btn
         target="_blank"
         text
         @click="goFav()"
       >
-        <span class="mr-2">Favoritos</span>
-      </v-btn>
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Usuario</span>
+        <span class="mr-2" style="color:white">Modelo</span>
       </v-btn>
     </v-app-bar>
 </template>

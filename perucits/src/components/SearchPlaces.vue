@@ -1,102 +1,156 @@
 <template>
-  <v-container>
-    <v-row class="text-center" style="padding-top: 5%;">
-
-      <v-col class="mb-4">
-        <div class="d-flex justify-space-around">
-          <v-select
-            label="Región natural"
-            :items="['California', 'Colorado', 'Florida', 'Georgia', 'Texas', 'Wyoming']"
-            variant="solo-filled"
-          ></v-select>
-
-          <v-select
-            label="Ubicación"
-            :items="['California', 'Colorado', 'Florida', 'Georgia', 'Texas', 'Wyoming']"
-            variant="solo-filled"
-          ></v-select>
-
-          <v-text-field
-            v-model="search"
-            append-icon="mdi-magnify"
-            label="Lugar"
-            single-line
-            hide-details
-          ></v-text-field>
-          <v-btn
-            id="menu3"
-            color="primary"
-          >
-            Buscar
-          </v-btn>
+  <div id="main" style="margin-top:0">
+    <h1 style="text-align:center; padding-top:1%;padding-bottom:1%; color:white; font-weight:bolder">Backend</h1>
+    <v-card
+      elevation="24"
+      width="40%"
+      class="mx-auto"
+    >
+      
+      <v-carousel
+        height="400"
+        hide-delimiter-background
+        show-arrows="hover"
+        pause
+      >
+        <v-carousel-item
+          v-for="(slide, i) in slides"
+          :key="i"
+        >
+        <div style="display:flex" >
+          <v-card-title>{{ slide }}</v-card-title>
+          <v-card-title style="background-color:#61CD4C ;position:absolute; right:0">{{cobertura[i]}}</v-card-title>
         </div>
-      </v-col>
-    </v-row>
-    <h2>Resultados</h2>
-    <v-divider></v-divider>
-    <v-row style="padding-top:5%">
-        <div class="d-flex justify-space-around">
-          <v-card
-            class="mx-auto"
-            max-width="344"
-            align="center"
-          >
-            
+        
 
-            <div align="center" style="font-weight:bolder; padding:2%; font-size:20px" >
-              Machu Picchu
-            </div>
-
-            <div align="center" style=" padding:1%" >
-              Cusco
-            </div>
-            <v-img
-              src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
-              height="200px"
-              cover
-            ></v-img>
-
-           <svg-icon type="mdi" :path="path" style="margin:2%; color:red" @onclick="likePlace()"></svg-icon>
-
-            
-
-
-              
-
-          </v-card>
-          
+        
+          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/xt3rY2RQh_0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </v-carousel-item>
+      </v-carousel>
+    </v-card>
+    <h1 style="text-align:center; padding-top:1%;padding-bottom:1%; color:white; font-weight:bolder">Frontend</h1>
+    <v-card
+      elevation="24"
+      width="40%"
+      class="mx-auto"
+    >
+      
+      <v-carousel
+        height="400"
+        hide-delimiter-background
+        show-arrows="hover"
+        pause
+      >
+        <v-carousel-item
+          v-for="(slide, i) in slides"
+          :key="i"
+        >
+        <div style="display:flex" >
+          <v-card-title>{{ slide }}</v-card-title>
+          <v-card-title style="background-color:#61CD4C ;position:absolute; right:0">{{cobertura[i]}}</v-card-title>
         </div>
-      </v-row>
-  </v-container>
+        
+
+        
+          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/xt3rY2RQh_0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </v-carousel-item>
+      </v-carousel>
+    </v-card>
+    <h1 style="text-align:center; padding-top:1%;padding-bottom:1%; color:white; font-weight:bolder">Testing</h1>
+    <v-card
+      elevation="24"
+      width="40%"
+      class="mx-auto"
+    >
+      
+      <v-carousel
+        height="400"
+        hide-delimiter-background
+        show-arrows="hover"
+        pause
+      >
+        <v-carousel-item
+          v-for="(slide, i) in slides"
+          :key="i"
+        >
+        <div style="display:flex" >
+          <v-card-title>{{ slide }}</v-card-title>
+          <v-card-title style="background-color:#F0E44D ;position:absolute; right:0">{{cobertura[i]}}</v-card-title>
+        </div>
+        
+
+        
+          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/xt3rY2RQh_0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </v-carousel-item>
+      </v-carousel>
+    </v-card>
+    <h1 style="text-align:center; padding-top:1%;padding-bottom:1%; color:white; font-weight:bolder">Seguridad</h1>
+    <v-card
+      elevation="24"
+      width="40%"
+      class="mx-auto"
+    >
+      
+      <v-carousel
+        height="400"
+        hide-delimiter-background
+        show-arrows="hover"
+        pause
+      >
+        <v-carousel-item
+          v-for="(slide, i) in slides"
+          :key="i"
+        >
+        <div style="display:flex" >
+          <v-card-title>{{ slide }}</v-card-title>
+          <v-card-title style="background-color:#4D72F0 ;position:absolute; right:0">{{cobertura[i]}}</v-card-title>
+        </div>
+        
+
+        
+          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/xt3rY2RQh_0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </v-carousel-item>
+      </v-carousel>
+    </v-card>
+  </div>
 </template>
 
 <script>
-  import SvgIcon from '@jamescoyle/vue-icon';
-  import { mdiHeart } from '@mdi/js';
   export default {
-    name: 'SearchPlaces',
-    components: {
-    SvgIcon
-  },
-    data: () => ({
-      selectedRegion: null,
-      selectedLocation: null,
-      selectedPlace: null,
-      path: mdiHeart,
-    }),
-    methods:{
-      likePlace(){
-        console.log("like");
+    data () {
+      return {
+        colors: [
+          'green',
+          'blue',
+          'green',
+          'yellow',
+        ],
+        cobertura: [
+          '66.67%',
+          '100%',
+          '75%',
+          '50%',
+        ],
+        slides: [
+          "DRY: Don't Repeat Yourself",
+          'No inventar',
+          'Legibilidad antes que optimización',
+          'Programar solo código necesario ',
+        ],
+        slides2: [
+          "Evitar los globales ",
+          'Usar [] en vez de New Array() ',
+          'Usar el operador ternario ',
+        ],
       }
-    }
+    },
   }
 </script>
 
 <style  lang="scss" scoped>
-  .v-select{
-    padding-right: 5%;
+  .v-card{
+    margin: 2%;
+    margin-bottom: 15%;
   }
-  .v-text-field{
-    padding-right: 5%;
-  }
+  
 </style>
