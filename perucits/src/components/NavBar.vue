@@ -30,9 +30,9 @@
         <span class="mr-2">Favoritos</span>
       </v-btn>
       <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
         target="_blank"
         text
+        @click="goEdit()"
       >
         <span class="mr-2">Usuario</span>
       </v-btn>
@@ -52,6 +52,9 @@
         },
         goSearch(){
           this.$router.push("/search")
+        },
+        goEdit(){
+          this.$router.push("/edit")
         }
       }
     }

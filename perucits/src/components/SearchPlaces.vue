@@ -40,6 +40,7 @@
             class="mx-auto"
             max-width="344"
             align="center"
+            @click="goPlace()"
           >
             
 
@@ -87,7 +88,10 @@
     methods:{
       likePlace(){
         console.log("like");
-      }
+      },
+      goPlace(){
+          this.$router.push("/place")
+        },
     }
   }
 </script>
