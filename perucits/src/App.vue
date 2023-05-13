@@ -25,10 +25,5 @@ export default {
 };
 </script>
 <style  lang="scss" scoped>
-  #main{
-    background: linear-gradient(rgba(5,7,12,0.90),rgba(5,7,12,0.90)), url("../src/components/fondo4.jpg") no-repeat center center fixed;
-    
-    
-  }
   
 </style>
