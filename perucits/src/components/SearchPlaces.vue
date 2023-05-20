@@ -33,9 +33,9 @@
           </div>
           <v-img :src="place.image" height="200px"
             cover></v-img>
-
-          <svg-icon type="mdi" :path="path" style="margin:2%; color:red" @onclick="likePlace()"></svg-icon>
-
+          
+          <svg-icon v-if="checkFavourite()" type="mdi" :path="path" style="margin:2%; color:red" @onclick="likePlace(place)"></svg-icon>
+          <svg-icon v-else type="mdi" :path="path" style="margin:2%;" @onclick="likePlace(place)"></svg-icon>
 
 
 
@@ -66,10 +66,12 @@ export default {
     regions: ["Costa", "Sierra", "Selva"],
     locations: ["Norte", "Centro", "Sur"],
     search: "",
+    favourites: []
   }),
   methods: {
-    likePlace() {
-      console.log("like");
+    likePlace(place) {
+      this.favourites.push(place)
+      localStorage.setItem("favourites", JSON.stringify(this.favourites))
     },
     goPlace(id) {
       console.log("id es"+id)
@@ -95,6 +97,13 @@ export default {
         this.places[i].region == this.selectedRegion ? this.showPlace(this.places[i]) : console.log("no")
       }
     },
+    checkFavourite(place_id){
+      for(let i = 0; i < this.favourites.length; i++){
+        if(this.favourites[i].place_id == place_id){
+          return true
+        }
+      }
+    }
   },
   created() {
     axios.get('http://localhost:8080/perucits/place?page=0&size=15')
@@ -105,6 +114,7 @@ export default {
       .catch(e => {
         console.log(e);
       });
+      this.favourites = JSON.parse(localStorage.getItem("favourites"))
   }
 }
 </script>
