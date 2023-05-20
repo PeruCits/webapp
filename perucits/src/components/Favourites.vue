@@ -5,11 +5,11 @@
     <v-row style="padding-top:5%">
         <div class="d-flex justify-space-around flex-wrap">
           <v-card
-            class="mx-auto"
+            class="mx-1 my-4"
             max-width="344"
             align="center"
             @click="goPlace()"
-            v-for="place in this.places" :key="place.place_id"
+            v-for="place in places" :key="place.place_id"
           >
             
 
