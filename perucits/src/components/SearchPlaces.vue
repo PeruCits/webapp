@@ -20,10 +20,9 @@
     <h2>Resultados</h2>
     <v-divider></v-divider>
     <v-row style="padding-top:5%">
-      <div class="d-flex justify-space-around flex-wrap" style="margin: 5%; padding-bottom: 15%;">
+      <div class="d-flex justify-space-around flex-wrap" style="margin: 5%;">
         <v-card class="mx-auto" max-width="344" align="center" @click="goPlace(place.id)" v-for="place in places"
           :key="place.id">
-
 
           <div align="center" style="font-weight:bolder; padding:2%; font-size:20px">
             {{ place.name }}
