@@ -41,18 +41,19 @@
             max-width="344"
             align="center"
             @click="goPlace()"
+            v-for="place in places" :key="place.id"
           >
             
 
             <div align="center" style="font-weight:bolder; padding:2%; font-size:20px" >
-              Machu Picchu
+              {{place.name}}
             </div>
 
             <div align="center" style=" padding:1%" >
-              Cusco
+              {{place.region}}
             </div>
             <v-img
-              src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+              src={{place.image}}}
               height="200px"
               cover
             ></v-img>
@@ -73,6 +74,7 @@
 
 <script>
   import SvgIcon from '@jamescoyle/vue-icon';
+  import axios from 'axios';
   import { mdiHeart } from '@mdi/js';
   export default {
     name: 'SearchPlaces',
@@ -84,6 +86,7 @@
       selectedLocation: null,
       selectedPlace: null,
       path: mdiHeart,
+      places: [],
     }),
     methods:{
       likePlace(){
@@ -92,6 +95,16 @@
       goPlace(){
           this.$router.push("/place")
         },
+    },
+    created(){
+      axios.get('http://localhost:8080/perucits/place')
+      .then(response => {
+        console.log(response.data);
+        this.places = response.data;
+      })
+      .catch(e => {
+        console.log(e);
+      });
     }
   }
 </script>
