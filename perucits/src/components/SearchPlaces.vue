@@ -77,19 +77,16 @@ export default {
       this.selectedPlace = id
     },
     showPlace(place) {
-      let places = [place]
-      this.places = places
+      console.log(place)
+      this.places = place
       console.log(this.places)
     },
     searchPlaces() {
-
+      console.log(this.search)
       for (let i = 0; i <= this.places.length; i++) {
-        this.places[i].name = this.search ? this.showPlace(this.places[i]) : this.places[i].name
+        this.places[i].name == this.search ? this.showPlace(this.places[i]) : this.places[i].name
       }
-      
       console.log("hola CPP")
-
-
     }
   },
   created() {
