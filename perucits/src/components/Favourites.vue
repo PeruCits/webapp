@@ -57,8 +57,14 @@
         console.log("like");
       },
       getFavourites(){
-        
-        this.favourites = JSON.parse(localStorage.getItem("favourites"))
+        //create an axios request to get favourites places from the user
+        axios.get('http://localhost:8080/perucits/favorite?page=0&size=5')
+        .then(response => {
+          this.places = response.data;
+        })
+        .catch(error => {
+          console.log(error);
+        })
       
       },
     },
