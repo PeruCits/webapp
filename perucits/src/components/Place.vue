@@ -59,7 +59,7 @@
                     Usuario de Perucits
                 </div>
                 <div  style="padding:1%; font-size:15px; " >
-                    Me gustò mucho visitar este lugar y espero volver de nuevo.ssssssssssssssssssssssssssss
+                    Me gustò mucho visitar este lugar y espero volver de nuevo.
                 </div>
           
             </v-card>
@@ -71,16 +71,43 @@
 </template>
 
 <script>
+import axios from 'axios';
   export default {
     name: 'PlaceView',
     components: {
   },
     data: () => ({
+      place: undefined,
+      comments:[]
     }),
     methods:{
       likePlace(){
         console.log("like");
-      }
+      },
+      getComments(){
+        axios.get('http://localhost:8080/perucits/comment/place/'+this.place.id)
+        .then(response => {
+          console.log(response.data);
+          this.comments = response.data.content;
+        })
+        .catch(e => {
+          console.log(e);
+        });
+      },
+    },
+    created(){
+      
+      axios.get('http://localhost:8080/perucits/place?page=0&size=15')
+      .then(response => {
+        console.log(response.data);
+        this.place = response.data.content;
+        getComments();
+      })
+      .catch(e => {
+        console.log(e);
+      });
+
+
     }
   }
 </script>

@@ -73,21 +73,28 @@ export default {
       console.log("like");
     },
     goPlace(id) {
+      
+      this.$store.commit("placeId",id)
       this.$router.push("/place")
-      this.selectedPlace = id
     },
     showPlace(place) {
       console.log(place)
-      this.places = place
+
+      this.places = [place]
       console.log(this.places)
     },
     searchPlaces() {
       console.log(this.search)
       for (let i = 0; i <= this.places.length; i++) {
-        this.places[i].name == this.search ? this.showPlace(this.places[i]) : this.places[i].name
+        this.places[i].name == this.search ? this.showPlace(this.places[i]) : console.log("no")
       }
-      console.log("hola CPP")
-    }
+    },
+    searchPlaceByRegion() {
+      console.log(this.selectedRegion)
+      for (let i = 0; i <= this.places.length; i++) {
+        this.places[i].region == this.selectedRegion ? this.showPlace(this.places[i]) : console.log("no")
+      }
+    },
   },
   created() {
     axios.get('http://localhost:8080/perucits/place?page=0&size=15')
