@@ -101,7 +101,7 @@ import axios from 'axios';
       .then(response => {
         console.log(response.data);
         this.place = response.data.content;
-        getComments();
+        this.getComments();
       })
       .catch(e => {
         console.log(e);
