@@ -15,7 +15,7 @@
             </div>
 
             <div style="margin-left:3%">
-              Cusco
+              {{place.region}}
             </div>
             <div align="center" style=" display:flex" >
               <v-img
@@ -25,8 +25,7 @@
                 style="margin:3%"
                 cover
                 ></v-img>
-                <p style="margin:3%">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est.
-                    Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est.</p>
+                <p style="margin:3%">{{place.description}}</p>
             </div>
           </v-card>
           
@@ -36,7 +35,7 @@
         <v-divider></v-divider>
         <v-row style="padding-top:5%">
         <div style="display:flex; flex-direction:column">
-        <v-card style="padding:3%; margin-top:3%" width=100%>
+            <v-card style="padding:3%; margin-top:3%" width=100%>
                 <div  style="font-weight:bolder; padding:1%; font-size:20px;" >
                     Mi usuario
                 </div>
@@ -45,21 +44,12 @@
                 <v-btn color="primary" style="margin-top:2%">Comentar</v-btn>
           
             </v-card>
-            <v-card style="padding:3%; margin-top:3%" width=100%>
+            <v-card style="padding:3%; margin-top:3%" width=100% v-for="comment in comments" :key="comment.id" >
                 <div  style="font-weight:bolder; padding:1%; font-size:20px;" >
-                    Usuario de Perucits
+                    {{comment.client.full_name}}
                 </div>
                 <div  style="padding:1%; font-size:15px; " >
-                    Me gustò mucho visitar este lugar y espero volver de nuevo.ssssssssssssssssssssssssssss
-                </div>
-          
-            </v-card>
-            <v-card style="padding:3%;margin-top:3%" width=100%>
-                <div  style="font-weight:bolder; padding:1%; font-size:20px;" >
-                    Usuario de Perucits
-                </div>
-                <div  style="padding:1%; font-size:15px; " >
-                    Me gustò mucho visitar este lugar y espero volver de nuevo.
+                    {{comment.comment}}
                 </div>
           
             </v-card>
