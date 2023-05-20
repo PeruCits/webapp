@@ -6,18 +6,20 @@
         <div class="d-flex justify-space-around">
           <v-select
             label="Región natural"
-            :items="['California', 'Colorado', 'Florida', 'Georgia', 'Texas', 'Wyoming']"
+            :items="this.regions"
             variant="solo-filled"
+            v-model="this.selectedRegion"
           ></v-select>
 
           <v-select
             label="Ubicación"
-            :items="['California', 'Colorado', 'Florida', 'Georgia', 'Texas', 'Wyoming']"
+            :items="this.locations"
             variant="solo-filled"
+            v-model="this.selectedLocation"
           ></v-select>
 
           <v-text-field
-            v-model="search"
+            v-model="this.search"
             append-icon="mdi-magnify"
             label="Lugar"
             single-line
@@ -40,7 +42,7 @@
             class="mx-auto"
             max-width="344"
             align="center"
-            @click="goPlace()"
+            @click="goPlace(place.id)"
             v-for="place in places" :key="place.id"
           >
             
@@ -53,7 +55,7 @@
               {{place.region}}
             </div>
             <v-img
-              src={{place.image}}}
+              src="https://cdn.pixabay.com/photo/2016/08/30/18/30/cusco-1631689_960_720.jpg"
               height="200px"
               cover
             ></v-img>
@@ -87,14 +89,32 @@
       selectedPlace: null,
       path: mdiHeart,
       places: [],
+      regions: ["Costa", "Sierra", "Selva"],
+      locations:["Norte", "Centro", "Sur"],
+      search: "",
     }),
     methods:{
       likePlace(){
         console.log("like");
       },
-      goPlace(){
+      goPlace(id){
           this.$router.push("/place")
+          this.selectedPlace=id
         },
+      showPlace(place){
+        let places = [place]
+        this.places = places
+      },
+      searchPlaces(name){
+        
+        for(let i=0; i < this.places.lenght; i++){
+          this.places[i].name=name ? this.showPlace(this.places[i]) : this.places[i].name
+
+        }
+
+
+        
+      }
     },
     created(){
       axios.get('http://localhost:8080/perucits/place')
