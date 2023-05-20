@@ -11,7 +11,7 @@
             
 
             <div  style="font-weight:bolder; padding:1%; font-size:20px; margin-left:2%" >
-              Machu Picchu
+              {{place.name}}
             </div>
 
             <div style="margin-left:3%">
