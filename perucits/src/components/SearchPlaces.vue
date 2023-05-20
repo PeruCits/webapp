@@ -28,6 +28,7 @@
           <v-btn
             id="menu3"
             color="primary"
+            @click="searchPlaces(this.search)"
           >
             Buscar
           </v-btn>
@@ -104,6 +105,7 @@
       showPlace(place){
         let places = [place]
         this.places = places
+        console.log(this.places)
       },
       searchPlaces(name){
         
