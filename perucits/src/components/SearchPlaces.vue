@@ -35,7 +35,7 @@
             cover></v-img>
           
           <svg-icon type="mdi" :path="path" style="margin:2%; color:red" ></svg-icon>
-          %%<svg-icon v-else type="mdi" :path="path" style="margin:2%;" @onclick="likePlace(place)"></svg-icon>
+          
 
 
 
