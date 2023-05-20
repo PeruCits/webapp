@@ -34,8 +34,8 @@
           <v-img :src="place.image" height="200px"
             cover></v-img>
           
-          <svg-icon v-if="checkFavourite()" type="mdi" :path="path" style="margin:2%; color:red" @onclick="likePlace(place)"></svg-icon>
-          <svg-icon v-else type="mdi" :path="path" style="margin:2%;" @onclick="likePlace(place)"></svg-icon>
+          <svg-icon type="mdi" :path="path" style="margin:2%; color:red" ></svg-icon>
+          %%<svg-icon v-else type="mdi" :path="path" style="margin:2%;" @onclick="likePlace(place)"></svg-icon>
 
 
 
@@ -97,13 +97,14 @@ export default {
         this.places[i].region == this.selectedRegion ? this.showPlace(this.places[i]) : console.log("no")
       }
     },
+    /*
     checkFavourite(place_id){
       for(let i = 0; i < this.favourites.length; i++){
         if(this.favourites[i].place_id == place_id){
           return true
         }
       }
-    }
+    }*/
   },
   created() {
     axios.get('http://localhost:8080/perucits/place?page=0&size=15')
