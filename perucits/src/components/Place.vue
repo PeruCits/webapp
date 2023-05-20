@@ -33,8 +33,8 @@
       </v-row>
       <h2>Comentarios</h2>
         <v-divider></v-divider>
-        <v-row style="padding-top:5%">
-        <div style="display:flex; flex-direction:column">
+        <v-row style="padding-top:5%;">
+        <div style="display:flex; flex-direction:column; width: 85%;">
             <v-card style="padding:3%; margin-top:3%" width=100%>
                 <div  style="font-weight:bolder; padding:1%; font-size:20px;" >
                     Mi usuario
@@ -44,7 +44,7 @@
                 <v-btn color="primary" style="margin-top:2%">Comentar</v-btn>
           
             </v-card>
-            <v-card style="padding:3%; margin-top:3%" width=100% v-for="comment in comments" :key="comment.id" >
+            <v-card style="padding:3%; margin-top:10%" width=100% v-for="comment in comments" :key="comment.id" >
                 <div  style="font-weight:bolder; padding:1%; font-size:20px;" >
                     {{comment.client.full_name}}
                 </div>
@@ -78,7 +78,7 @@ import axios from 'axios';
         axios.get('http://localhost:8080/perucits/comment/place/'+this.place.place_id)
         .then(response => {
           console.log(response.data);
-          this.comments = response.data.content;
+          this.comments = response.data;
         })
         .catch(e => {
           console.log(e);
