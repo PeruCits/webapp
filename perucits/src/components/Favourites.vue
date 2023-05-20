@@ -68,9 +68,9 @@
       
       },
     },
-    created:(
+    created(){
       this.getFavourites()
-    )
+    }
   }
 </script>
 
