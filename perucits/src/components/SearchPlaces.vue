@@ -19,9 +19,9 @@
     </v-row>
     <h2>Resultados</h2>
     <v-divider></v-divider>
-    <v-row style="padding-top:5%">
-      <div class="d-flex justify-space-around flex-wrap" style="margin: 5%;">
-        <v-card class="mx-auto" max-width="344" align="center" @click="goPlace(place.place_id)" v-for="place in places"
+    <v-row style="padding-top:3%">
+      <div class="d-flex justify-space-around flex-wrap" style="margin: 2%;">
+        <v-card class="mx-1 my-4" max-width="344" align="center" @click="goPlace(place.place_id)" v-for="place in places"
           :key="place.place_id">
 
           <div align="center" style="font-weight:bolder; padding:2%; font-size:20px">
@@ -31,7 +31,7 @@
           <div align="center" style=" padding:1%">
             {{ place.region }}
           </div>
-          <v-img src="https://cdn.pixabay.com/photo/2016/08/30/18/30/cusco-1631689_960_720.jpg" height="200px"
+          <v-img :src="place.image" height="200px"
             cover></v-img>
 
           <svg-icon type="mdi" :path="path" style="margin:2%; color:red" @onclick="likePlace()"></svg-icon>

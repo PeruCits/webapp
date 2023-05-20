@@ -19,13 +19,13 @@
             </div>
             <div align="center" style=" display:flex" >
               <v-img
-                src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+                :src="place.image"
                 height="300px"
                 width="450px"
                 style="margin:3%"
                 cover
                 ></v-img>
-                <p style="margin:3%">{{place.description}}</p>
+                <p style="margin:3%; text-align: left;">{{place.description}}</p>
             </div>
           </v-card>
           
@@ -34,7 +34,7 @@
       <h2>Comentarios</h2>
         <v-divider></v-divider>
         <v-row style="padding-top:5%;">
-        <div style="display:flex; flex-direction:column; width: 85%;">
+        <div style="display:flex; flex-direction:column; width: 100%;">
             <v-card style="padding:3%; margin-top:3%" width=100%>
                 <div  style="font-weight:bolder; padding:1%; font-size:20px;" >
                     Mi usuario
