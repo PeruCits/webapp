@@ -7,7 +7,7 @@
           width="40"
         />
 
-        <span class="title font-weight-light" style="color:white">Modelo Copilot</span>
+        <span class="title font-weight-light" style="color:white">Modelo de mejores Prácticas con GitHub Copilot</span>
       </div>
 
       <v-spacer></v-spacer>
@@ -15,14 +15,16 @@
       <v-btn
         target="_blank"
         text
+        @click="goSearch()"
       >
-        <span class="mr-2" style="color:white">Proyecto</span>
+        <span class="mr-2" style="color:white">Prácticas</span>
       </v-btn>
       <v-btn
         target="_blank"
         text
+        @click="goFav()"
       >
-        <span class="mr-2" style="color:white">Prácticas</span>
+        <span class="mr-2" style="color:white">Modelo</span>
       </v-btn>
     </v-app-bar>
 </template>
