@@ -3,13 +3,13 @@
     <h2>Favoritos</h2>
     <v-divider></v-divider>
     <v-row style="padding-top:5%">
-        <div class="d-flex justify-space-around">
+        <div class="d-flex justify-space-around flex-wrap">
           <v-card
             class="mx-auto"
             max-width="344"
             align="center"
             @click="goPlace()"
-            v-for="place in this.places" :key="place.id"
+            v-for="place in this.places" :key="place.place_id"
           >
             
 
@@ -60,7 +60,7 @@
         //create an axios request to get favourites places from the user
         axios.get('http://localhost:8080/perucits/favorite?page=0&size=5')
         .then(response => {
-          this.places = response.data;
+          this.places = response.data.content;
         })
         .catch(error => {
           console.log(error);
