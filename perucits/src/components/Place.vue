@@ -85,7 +85,7 @@ import axios from 'axios';
         console.log("like");
       },
       getComments(){
-        axios.get('http://localhost:8080/perucits/comment/place/'+this.place.id)
+        axios.get('http://localhost:8080/perucits/comment/place/'+this.place.place_id)
         .then(response => {
           console.log(response.data);
           this.comments = response.data.content;
@@ -97,10 +97,10 @@ import axios from 'axios';
     },
     created(){
       
-      axios.get('http://localhost:8080/perucits/place?page=0&size=15')
+      axios.get('http://localhost:8080/perucits/place/'+this.$store.state.placeId)
       .then(response => {
         console.log(response.data);
-        this.place = response.data.content;
+        this.place = response.data;
         this.getComments();
       })
       .catch(e => {
