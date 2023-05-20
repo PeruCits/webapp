@@ -8,7 +8,6 @@
             class="mx-1 my-4"
             max-width="344"
             align="center"
-            @click="goPlace()"
             v-for="place in places" :key="place.place_id"
           >
             
