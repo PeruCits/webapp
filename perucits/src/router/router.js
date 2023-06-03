@@ -8,6 +8,7 @@ import EditProfile from '../components/EditProfile.vue'
 Vue.use(VueRouter)
 
 const routes = [
+    {path: '/', name: 'SearchPlaces', component: SearchPlaces},
     {path: '/login', name: 'LoginView', component: Login},
     {path: '/search', name: 'SearchPlaces', component: SearchPlaces},
     {path: '/favourites', name: 'FavPlaces', component: Favourites},
