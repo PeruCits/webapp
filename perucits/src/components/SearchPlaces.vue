@@ -93,6 +93,10 @@ export default {
     },
     searchPlaceByRegion() {
       console.log(this.selectedRegion)
+
+      let places = this.places
+      console.log(places)
+
       for (let i = 0; i <= this.places.length; i++) {
         this.places[i].region == this.selectedRegion ? this.showPlace(this.places[i]) : console.log("no")
       }
@@ -107,6 +111,7 @@ export default {
     }*/
   },
   created() {
+    
     axios.get('http://localhost:8080/perucits/place?page=0&size=15')
       .then(response => {
         console.log(response.data);

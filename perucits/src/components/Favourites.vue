@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-row class="text-center" style="padding-top: 5%;">
+    
 
     <h2>Favoritos</h2>
     <v-divider></v-divider>

@@ -1,11 +1,10 @@
 //give the standard structure for a unit test
  describe('app.vue', () => {
-    it('renders props.msg when passed', () => {
-        let value = 5;
-        value = value+2;
-        if(value != 7){
-            throw new Error("value should be 7");
+    //test to obtain the favourite places from the local storage
+    it('should get the favourite places from the local storage', () => {
+        const wrapper = shallowMount(App)
+        expect(wrapper.vm.favouritePlaces).toEqual([])
         }
+    )
 
-     })
 })

@@ -39,9 +39,7 @@
     data: () => ({
     }),
     methods:{
-      likePlace(){
-        console.log("like");
-      }
+
     }
   }
 </script>
