@@ -92,14 +92,6 @@ export default {
     }*/
   },
   created() {
-    axios.get('http://localhost:8080/perucits/place?page=0&size=15')
-      .then(response => {
-        console.log(response.data);
-        this.places = response.data.content;
-      })
-      .catch(e => {
-        console.log(e);
-      });
       this.favourites = JSON.parse(localStorage.getItem("favourites"))
   }
 }

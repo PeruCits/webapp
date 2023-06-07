@@ -5,10 +5,10 @@
       <v-col class="mb-4">
         <div class="d-flex justify-space-around">
           <v-select label="Región natural" :items="this.regions" variant="solo-filled"
-            v-model="this.selectedRegion"></v-select>
+            v-model="this.selectedRegion" @change="searchPlaceByRegion()"></v-select>
 
           <v-select label="Ubicación" :items="this.locations" variant="solo-filled"
-            v-model="this.selectedLocation"></v-select>
+            v-model="this.selectedLocation" @change="searchPlaceByRegion()"></v-select>
 
           <v-text-field v-model="search" append-icon="mdi-magnify" label="Lugar" single-line hide-details></v-text-field>
           <v-btn id="menu3" color="primary" @click="searchPlaces()">
@@ -34,7 +34,7 @@
           <v-img :src="place.image" height="200px"
             cover></v-img>
           
-          <svg-icon type="mdi" :path="path" style="margin:2%; color:red" ></svg-icon>
+          <svg-icon type="mdi" :path="path" style="margin:2%; color:red" @click="likePlace(place)"></svg-icon>
           
 
 
@@ -63,8 +63,8 @@ export default {
     selectedPlace: null,
     path: mdiHeart,
     places: [],
-    regions: ["Costa", "Sierra", "Selva"],
-    locations: ["Norte", "Centro", "Sur"],
+    regions: ["Ninguno","Costa", "Sierra", "Selva"],
+    locations: ["Ninguno","Norte", "Centro", "Sur"],
     search: "",
     favourites: []
   }),
@@ -90,6 +90,7 @@ export default {
       for (let i = 0; i <= this.places.length; i++) {
         this.places[i].name == this.search ? this.showPlace(this.places[i]) : console.log("no")
       }
+      this.search = ""
     },
     searchPlaceByRegion() {
       console.log(this.selectedRegion)
@@ -98,7 +99,18 @@ export default {
       console.log(places)
 
       for (let i = 0; i <= this.places.length; i++) {
-        this.places[i].region == this.selectedRegion ? this.showPlace(this.places[i]) : console.log("no")
+        this.places[i].region == this.selectedRegion ? this.places.push(this.places[i]) : console.log("no")
+      }
+
+    },
+    searchPlaceByLocation() {
+      console.log(this.selectedRegion)
+
+      let places = this.places
+      console.log(places)
+
+      for (let i = 0; i <= this.places.length; i++) {
+        this.places[i].location == this.selectedLocation ? this.places.push(this.places[i]) : console.log("no")
       }
     },
     /*
