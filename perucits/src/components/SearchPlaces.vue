@@ -32,13 +32,13 @@
             {{ place.region }}
           </div>
           <v-img :src="place.image" height="200px"
-            cover @click="goPlace(place.place_id)"></v-img>
+            cover @click="goPlace(place.place_id)"  style="cursor: pointer;"></v-img>
           
           <div v-if="checkFavourite(place.place_id)" align="center" style="font-weight:bolder; padding:2%; font-size:20px" @click="likePlace(place)">
-            <svg-icon type="mdi" :path="path" style="margin:2%; color:red" ></svg-icon>
+            <svg-icon type="mdi" :path="path" style="margin:2%; color:red; cursor:pointer" ></svg-icon>
           </div>
-          <div v-else align="center" style="font-weight:bolder; padding:2%; font-size:20px" @click="likePlace(place)">
-            <svg-icon type="mdi" :path="path" style="margin:2%;" ></svg-icon>
+          <div v-else align="center" style="font-weight:bolder; padding:2%; font-size:20px, cursor:pointer" @click="likePlace(place)" href="#">
+            <svg-icon type="mdi" :path="path" style="margin:2%; cursor:pointer" ></svg-icon>
           </div>
           
 
