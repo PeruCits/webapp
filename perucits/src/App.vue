@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <NavBar />
+    <NavBar v-if="this.$store.state.userLogged"></NavBar>
 
     <v-main>
       <router-view />

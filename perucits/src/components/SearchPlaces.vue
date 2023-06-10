@@ -5,10 +5,10 @@
       <v-col class="mb-4">
         <div class="d-flex justify-space-around">
           <v-select label="Región natural" :items="this.regions" variant="solo-filled"
-            v-model="this.selectedRegion" @change="searchPlaceByRegion()"></v-select>
+            v-model="selectedRegion" @change="searchPlaceByRegion(selectedRegion)"></v-select>
 
           <v-select label="Ubicación" :items="this.locations" variant="solo-filled"
-            v-model="this.selectedLocation" @change="searchPlaceByRegion()"></v-select>
+            v-model="selectedLocation" @change="searchPlaceByLocation(selectedLocation)"></v-select>
 
           <v-text-field v-model="search" append-icon="mdi-magnify" label="Lugar" single-line hide-details></v-text-field>
           <v-btn id="menu3" color="primary" @click="searchPlaces()">
@@ -21,7 +21,7 @@
     <v-divider></v-divider>
     <v-row style="padding-top:3%">
       <div class="d-flex justify-space-around flex-wrap" style="margin: 2%;">
-        <v-card class="mx-1 my-4" max-width="344" align="center" @click="goPlace(place.place_id)" v-for="place in places"
+        <v-card class="mx-1 my-4" max-width="344" align="center"  v-for="place in places"
           :key="place.place_id">
 
           <div align="center" style="font-weight:bolder; padding:2%; font-size:20px">
@@ -32,14 +32,15 @@
             {{ place.region }}
           </div>
           <v-img :src="place.image" height="200px"
-            cover></v-img>
+            cover @click="goPlace(place.place_id)"></v-img>
           
-          <svg-icon type="mdi" :path="path" style="margin:2%; color:red" @click="likePlace(place)"></svg-icon>
+          <div v-if="checkFavourite(place.place_id)" align="center" style="font-weight:bolder; padding:2%; font-size:20px" @click="likePlace(place)">
+            <svg-icon type="mdi" :path="path" style="margin:2%; color:red" ></svg-icon>
+          </div>
+          <div v-else align="center" style="font-weight:bolder; padding:2%; font-size:20px" @click="likePlace(place)">
+            <svg-icon type="mdi" :path="path" style="margin:2%;" ></svg-icon>
+          </div>
           
-
-
-
-
 
         </v-card>
 
@@ -63,15 +64,58 @@ export default {
     selectedPlace: null,
     path: mdiHeart,
     places: [],
-    regions: ["Ninguno","Costa", "Sierra", "Selva"],
-    locations: ["Ninguno","Norte", "Centro", "Sur"],
+    regions: ["Ninguno","costa", "sierra", "selva"],
+    locations: ["Ninguno","norte", "centro", "sur"],
     search: "",
     favourites: []
   }),
   methods: {
+    checkFavourite(place_id){
+      for(let i = 0; i < this.favourites.length; i++){
+        if(this.favourites[i].place_id == place_id){
+          return true
+        }
+      }
+    },
+    checkFavourites(){
+      if(localStorage.getItem("favourites") == null){
+        let array = []
+        localStorage.setItem("favourites", JSON.stringify(array))
+      }
+      else{
+        this.favourites = JSON.parse(localStorage.getItem("favourites"))
+      }
+    },
     likePlace(place) {
-      this.favourites.push(place)
+      console.log(place)
+      console.log("añadido a fav")
+      this.checkFavourites()
+      if (this.checkFavourite(place.place_id)){
+        console.log("ya esta en fav")
+        this.dislikePlace(place)
+        return
+      }
+
+      if (this.favourites == null){
+        this.favourites = [place]
+      }else{
+        this.favourites.push(place)
+      }
+      console.log(this.favourites)
       localStorage.setItem("favourites", JSON.stringify(this.favourites))
+    },
+    dislikePlace(place) {
+      let newarray = []
+      for(let i = 0; i < this.favourites.length; i++){
+        if(this.favourites[i].place_id != place.place_id){
+          console.log("+1");
+          newarray.push(this.favourites[i])
+        }
+      }
+      console.log(newarray.length)
+      this.favourites = newarray
+      localStorage.setItem("favourites", JSON.stringify(this.favourites))
+      
     },
     goPlace(id) {
       console.log("id es"+id)
@@ -92,39 +136,49 @@ export default {
       }
       this.search = ""
     },
-    searchPlaceByRegion() {
-      console.log(this.selectedRegion)
+    searchPlaceByRegion(region) {
+      console.log(region)
 
-      let places = this.places
-      console.log(places)
-
-      for (let i = 0; i <= this.places.length; i++) {
-        this.places[i].region == this.selectedRegion ? this.places.push(this.places[i]) : console.log("no")
-      }
-
-    },
-    searchPlaceByLocation() {
-      console.log(this.selectedRegion)
-
-      let places = this.places
-      console.log(places)
-
-      for (let i = 0; i <= this.places.length; i++) {
-        this.places[i].location == this.selectedLocation ? this.places.push(this.places[i]) : console.log("no")
-      }
-    },
-    /*
-    checkFavourite(place_id){
-      for(let i = 0; i < this.favourites.length; i++){
-        if(this.favourites[i].place_id == place_id){
-          return true
+      let places = []
+      console.log(this.places)
+      for (let i = 0; i < this.places.length; i++) {
+        console.log(this.places[i].region)
+        if(this.places[i].region == region){
+          console.log("si")
+          places.push(this.places[i])
+        }
+        else{
+          console.log("no")
         }
       }
-    }*/
+      console.log("caca")
+      this.places = places
+      console.log(places)
+
+    },
+    searchPlaceByLocation(location) {
+
+      let places = []
+      console.log(this.places)
+      for (let i = 0; i < this.places.length; i++) {
+        console.log(this.places[i].location)
+        if(this.places[i].location == location){
+          console.log("si")
+          places.push(this.places[i])
+        }
+        else{
+          console.log("no")
+        }
+      }
+      console.log("caca")
+      this.places = places
+      console.log(places)
+    },
+    
   },
   created() {
     
-    axios.get('http://localhost:8080/perucits/place?page=0&size=15')
+    axios.get('https://perucitsback.herokuapp.com/perucits/place?page=0&size=15')
       .then(response => {
         console.log(response.data);
         this.places = response.data.content;
@@ -133,6 +187,8 @@ export default {
         console.log(e);
       });
       this.favourites = JSON.parse(localStorage.getItem("favourites"))
+
+    this.checkFavourites()
   }
 }
 </script>

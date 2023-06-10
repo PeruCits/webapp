@@ -39,9 +39,9 @@
                 <div  style="font-weight:bolder; padding:1%; font-size:20px;" >
                     Mi usuario
                 </div>
-                <v-textarea label="Deja un comentario de este lugar" style="padding:1%; font-size:15px; " >
+                <v-textarea v-model="userComment" label="Deja un comentario de este lugar" style="padding:1%; font-size:15px; " >
                 </v-textarea>
-                <v-btn color="primary" style="margin-top:2%">Comentar</v-btn>
+                <v-btn color="primary" style="margin-top:2%" @click="postComment(userComment)">Comentar</v-btn>
           
             </v-card>
             <v-card style="padding:3%; margin-top:10%" width=100% v-for="comment in comments" :key="comment.id" >
@@ -68,14 +68,15 @@ import axios from 'axios';
   },
     data: () => ({
       place: undefined,
-      comments:[]
+      comments:[],
+      userComment:""
     }),
     methods:{
       likePlace(){
         console.log("like");
       },
       getComments(){
-        axios.get('http://localhost:8080/perucits/comment/place/'+this.place.place_id)
+        axios.get('https://perucitsback.herokuapp.com/perucits/comment/place/'+this.place.place_id)
         .then(response => {
           console.log(response.data);
           this.comments = response.data;
@@ -84,10 +85,23 @@ import axios from 'axios';
           console.log(e);
         });
       },
+      postComment(comment){
+        console.log(comment);
+        console.log(this.place.place_id);
+        axios.post('https://perucitsback.herokuapp.com/perucits/comment',
+        {
+          "comment": comment,
+          "clientId": "70272443",
+          "placeId": this.place.place_id
+        })
+        .catch(e => {
+          console.log(e);
+        });
+      },
     },
     created(){
       
-      axios.get('http://localhost:8080/perucits/place/'+this.$store.state.placeId)
+      axios.get('https://perucitsback.herokuapp.com/perucits/place/'+this.$store.state.placeId)
       .then(response => {
         console.log(response.data);
         this.place = response.data;

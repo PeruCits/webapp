@@ -5,7 +5,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    placeId:undefined
+    placeId:undefined,
+    userLogged:false,
   },
   mutations: {
   },

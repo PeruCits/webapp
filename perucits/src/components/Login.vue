@@ -10,21 +10,23 @@
             <h2 >Ingresa a Perucits</h2>
 
             <v-text-field label="Email" variant="outlined"></v-text-field>
-            <v-text-field label="Password" variant="outlined"></v-text-field>
+            <v-text-field label="Password" variant="outlined" type="password"></v-text-field>
 
-
-           <v-btn
-            id="menu3"
+          <div style="display:flex, flex-direction:column">
+          <v-btn
             color="primary"
           >
             Ingresar
           </v-btn>
           <v-btn
-            id="menu3"
             color="secondary"
           >
             Registrar
           </v-btn>
+          
+          
+          </div>
+           
      
           </v-card>
           
@@ -45,5 +47,6 @@
 </script>
 
 <style  lang="scss" scoped>
-  
+  .v-btn{
+    margin: 5%;}
 </style>
